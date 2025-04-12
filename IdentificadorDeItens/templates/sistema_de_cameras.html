@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Identificação de itens {% endblock %}
+
+{% block conteudo %}
+<section class="mb-5">
+  <h2 class="section-title">Sistema de Identificação</h2>
+  <p>O <strong>1° Passo</strong>
+    Escolha um modo de Idenficicação!
+  </p>
+</section>
+
+<section class="mb-5">
+<h2 class="section-title">Tipos de identificação:</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <div class="card-icon mb-3">🤖</div>
+              <h5 class="card-title">Em tempo real</h5>
+              <p class="card-text">Aponde a sua camera para um item do museu IntegraTech.</p>
+                <a class="btn btn-info" href="{% url 'gravar_frames' %}">Abrir camera</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <div class="card-icon mb-3">🎓</div>
+              <h5 class="card-title">Por video</h5>
+              <p class="card-text">Carregue um video para o sistema de Identificação processar.</p>
+                <a class="btn btn-info" href="{% url 'sistema_de_cameras' %}">Carregar um video</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+{% endblock %}

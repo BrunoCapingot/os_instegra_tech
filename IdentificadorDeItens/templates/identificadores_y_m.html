@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Identificação de itens {% endblock %}
+
+{% block conteudo %}
+<section class="mb-5">
+  <h2 class="section-title">Identificação de Itens com YOLO V11</h2>
+  <p>O <strong>Sistema de Identificação: </strong>
+    E um sistema implementado pelo aluno Bruno Rodrigues Capingote neste site. Com o inicio de seu desenvolvimento em 2024, oferece ao usuario um modo simples e pratido de identificar itens do museu de tecnologia IntegraTech!
+  </p>
+</section>
+
+<section class="mb-5">
+<h2 class="section-title">O que você vai encontrar</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <div class="card-icon mb-3">🖥️</div>
+              <h5 class="card-title">Identificação por camera ou videos.</h5>
+              <p class="card-text">Explore o sistema de identificação ao maximo, tendo o acesso a informação dos itens de uma maneira simples e pratica.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <div class="card-icon mb-3">🤖</div>
+              <h5 class="card-title">Acesso a informação</h5>
+              <p class="card-text">Veja como a IA está sendo usada no processo de identificação de itens.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 text-center">
+            <div class="card-body">
+              <div class="card-icon mb-3">🎓</div>
+              <h5 class="card-title">Aprenda a Identificar Itens</h5>
+              <p class="card-text">Participe de palestras e cursos desenvolvidos no museu de tecnologia IntegraTech, basta conversar com algum responsavel do laboratorio GEDAIA ou do museu!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="section-title">Como identificar os itens utilizando o sistema?</h2>
+      <p>O sistema e bastante simples e interativo, basta apertar e Iniciar Identificação  apontar para o item que deseja a acessar suas informações. O sistema ira fazer uso de uma rede neural que pegara as imagens capturadas pela camera do dispositivo e selecionar a classe do item correspondednte, logo apos o sistema trara as informaçãoes presentes no sistema, do respectivo artefato!</p>
+        <a class="btn btn-info" href="{% url 'sistema_de_cameras' %}">Identificar um item</a>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Identificação de itens {% endblock %}
+
+{% block conteudo %}
+<!-- Exibe o vídeo da câmera do cliente -->
+<video id="video" width="400" autoplay></video>
+<br>
+<button id="capture">Capturar Imagem</button>
+<canvas id="canvas" style="display:none;"></canvas>
+
+<script>
+navigator.mediaDevices.getUserMedia({ video: true })
+  .then(function(stream) {
+    document.getElementById('video').srcObject = stream;
+  });
+
+document.getElementById('capture').addEventListener('click', function() {
+    const canvas = document.getElementById('canvas');
+    const video = document.getElementById('video');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext('2d').drawImage(video, 0, 0);
+
+    // converte a imagem para base64
+    const dataURL = canvas.toDataURL('image/jpeg');
+
+    // envia pro Django via POST
+    fetch('/upload/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': '{{ csrf_token }}'
+      },
+      body: JSON.stringify({ imagem: dataURL })
+    }).then(response => {
+        alert("Imagem enviada!");
+    });
+});
+</script>
+
+
+{% endblock %}
