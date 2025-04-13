@@ -1,19 +1,14 @@
 from django.shortcuts import render
-import base64
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-import cv2
-import numpy as np
-import json
+from django.views.generic import TemplateView, ListView
 
-def index(request):
-    return render(request, 'index.html')
+class HomeView(TemplateView):
+    template_name = 'index.html'
 
-def identificadores_view(request):
-    return render(request, 'identificadores_y_m.html')
+class IdentificadoresView(TemplateView):
+    template_name = 'identificadores_y_m.html'
 
-def sistema_de_cameras(request):
-    return render(request, 'sistema_de_cameras.html')
+class CamerasView(TemplateView):
+    template_name = 'sistema_de_cameras.html'
 
-def gravar_frames(request):
-    return render(request, 'gravar_frames.html')
+class FramesView(TemplateView):
+    template_name = 'gravar_frames.html'

@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
-{% block titulo %} Identificação de itens {% endblock %}
+{% block title %} Identificação de itens {% endblock %}
 
-{% block conteudo %}
+{% block content %}
 <section class="mb-5">
   <h2 class="section-title">Identificação de Itens com YOLO V11</h2>
   <p>O <strong>Sistema de Identificação: </strong>
@@ -46,7 +46,7 @@
     <section class="mb-5">
       <h2 class="section-title">Como identificar os itens utilizando o sistema?</h2>
       <p>O sistema e bastante simples e interativo, basta apertar e Iniciar Identificação  apontar para o item que deseja a acessar suas informações. O sistema ira fazer uso de uma rede neural que pegara as imagens capturadas pela camera do dispositivo e selecionar a classe do item correspondednte, logo apos o sistema trara as informaçãoes presentes no sistema, do respectivo artefato!</p>
-        <a class="btn btn-info" href="{% url 'sistema_de_cameras' %}">Identificar um item</a>
+        <a class="btn btn-info" href="{% url 'id:sistema_de_cameras' %}">Identificar um item</a>
     </section>
 
 {% endblock %}
