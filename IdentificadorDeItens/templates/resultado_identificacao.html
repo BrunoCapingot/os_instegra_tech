@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Itens do Museu IntegraTech{% endblock %}
+
+{% block conteudo %}
+<section class="mb-5">
+  <h2 class="section-title">Itens do Museu</h2>
+  <div class="row">
+    {% for item in itens %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        {% if item.imagem_url %}
+        <img src="{{ item.imagem_url }}" class="card-img-top" alt="{{ item.nome }}">
+        {% else %}
+        <img src="https://via.placeholder.com/400x250?text=Sem+Imagem" class="card-img-top" alt="Imagem não disponível">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ item.nome }}</h5>
+          <p class="card-text">{{ item.descricao|truncatewords:20 }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Fabricante:</strong> {{ item.fabricante }}</li>
+          <li class="list-group-item"><strong>Ano:</strong> {{ item.ano_fabricacao }}</li>
+          <li class="list-group-item"><strong>Categoria:</strong> {{ item.categoria.nome }}</li>
+          <li class="list-group-item"><strong>Estado:</strong> {{ item.estado_conservacao }}</li>
+          <li class="list-group-item"><strong>Aquisição:</strong> {{ item.data_aquisicao }}</li>
+        </ul>
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-muted">Nenhum item cadastrado ainda.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

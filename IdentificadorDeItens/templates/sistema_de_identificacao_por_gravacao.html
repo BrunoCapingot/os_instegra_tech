@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Upload de Vídeo{% endblock %}
+
+{% block conteudo %}
+<h2>Enviar vídeo para processamento</h2>
+
+<form method="POST" enctype="multipart/form-data" action="{% url 'upload_video' %}">
+  {% csrf_token %}
+  <input type="file" name="video" accept="video/*" required>
+  <button type="submit" class="btn btn-primary">Enviar Vídeo</button>
+</form>
+{% endblock %}

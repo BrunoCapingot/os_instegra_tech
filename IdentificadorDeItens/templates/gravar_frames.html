@@ -6,7 +6,7 @@
 <!-- Exibe o vídeo da câmera do cliente -->
 <video id="video" width="400" autoplay></video>
 <br>
-<button id="capture">Capturar Imagem</button>
+<a id="capture" href="/resultado_identificacaco" class="btn btn-info">Capturar Imagem</a>
 <canvas id="canvas" style="display:none;"></canvas>
 
 <script>
@@ -15,7 +15,8 @@ navigator.mediaDevices.getUserMedia({ video: true })
     document.getElementById('video').srcObject = stream;
   });
 
-document.getElementById('capture').addEventListener('click', function() {
+document.getElementById('capture').addEventListener('click', function(event) {
+    event.preventDefault();  // Previne o redirecionamento do link
     const canvas = document.getElementById('canvas');
     const video = document.getElementById('video');
     canvas.width = video.videoWidth;
@@ -26,7 +27,7 @@ document.getElementById('capture').addEventListener('click', function() {
     const dataURL = canvas.toDataURL('image/jpeg');
 
     // envia pro Django via POST
-    fetch('/upload/', {
+    fetch('/gravar_frames/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -34,10 +35,15 @@ document.getElementById('capture').addEventListener('click', function() {
       },
       body: JSON.stringify({ imagem: dataURL })
     }).then(response => {
-        alert("Imagem enviada!");
+        if (response.ok) {
+            alert("Imagem enviada!");
+        } else {
+            alert("Erro ao enviar a imagem.");
+        }
+    }).catch(error => {
+        alert("Erro ao enviar a imagem.");
     });
 });
 </script>
-
 
 {% endblock %}
